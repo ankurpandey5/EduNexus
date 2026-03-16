@@ -20,6 +20,33 @@ Most online platforms give you a list of videos without tracking actual learning
 To run the backend server locally on your machine, open your terminal and run:
 
 
+
+
+## ML Update
+
+1. Collected **NDA Previous Year Questions (PYQs)** from multiple exam years.
+
+2. Built a **structured Excel dataset**, where each row represents a chapter for a specific year.
+
+3. Dataset columns include:
+   - Year
+   - Subject (Maths or GAT)
+   - Chapter
+   - Questions (questions asked from that chapter in that year)
+   - Time_required (estimated study hours)
+
+4. Calculated **Total_time_required** by multiplying `Time_required` with a factor (≈2.5–3) to account for lectures, notes, practice, and revision.
+
+5. Computed **Importance score**:
+
+   `Importance = Questions / Total questions in that exam year`
+
+6. Calculated **Priority score** to decide study order:
+
+   `Priority = Importance / Total_time_required`
+
+
+
 ```bash
 cd backend
 npm install
