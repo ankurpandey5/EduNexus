@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AI Study Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="box">
+        <h1> AI Study Planner</h1>
+
+        <div class="container">
+            <div class="days">
+                Enter Number of Days:
+                <input id="days" placeholder="Days"><br><br>
+            </div>
+            <div class="hours">
+                Enter Hours per day you can study:
+                <input id="hours" placeholder="Hours per day">
+                <br>
+            </div>
+            <button onclick="generatePlan()">Generate Plan</button>
+        </div>
+        <h2>📘 Maths Plan</h2>
+        <div id="maths"></div>
+
+        <h2>📗 GAT Plan</h2>
+        <div id="gat"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+﻿Subject,Chapter,Avg Importance,Avg Priority,Avg_Question(past-10-year),Total_time_required
+Maths,3D-Geometry,0.0422,0.0018,10.08,24
+Maths,Application of Derivatives,0.0327,0.0018,7.83,18
+Maths,"Binomial Theorem, Mathematical Induction",0.019,0.0016,4.5,12
+Maths,"Cartesian Co-ordinate System, Straight Line",0.0445,0.0025,10.67,18
+Maths,Circles,0.008,0.0004,1.92,18
+Maths,Complex Numbers,0.0296,0.0025,7.08,12
+Maths,"Conics - Parabola, Ellipse & Hyperbola",0.0188,0.001,4.5,18
+Maths,Definite Integration & its applications,0.0354,0.0015,8.5,24
+Maths,Derivatives,0.0228,0.0012,5.42,18
+Maths,Differential Equation,0.0401,0.0022,9.58,18
+Maths,"Functions, Limits, Continuity and Differentiability",0.0615,0.0026,14.75,24
+Maths,Height & Distance,0.0144,0.0012,3.42,12
+Maths,Indefinite Integration,0.019,0.0016,4.5,12
+Maths,Matrices and Determinants,0.0665,0.0037,15.92,18
+Maths,Pair of Straight Lines,0.0062,0.0005,1.5,12
+Maths,Permutation and Combination,0.0216,0.0012,5.17,18
+Maths,"Polynomial, Quadratic Equation & Inequalities",0.0488,0.0027,11.67,18
+Maths,Probability and Probability Distribution,0.0602,0.0025,14.42,24
+Maths,"Properties of Triangle, Inverse Trigonometric Function",0.031,0.0017,7.42,18
+Maths,Sequence and Series,0.0395,0.0022,9.5,18
+Maths,"Set, Relation, Function and Number System",0.0773,0.0032,18.5,24
+Maths,Statistics,0.0625,0.0035,15,18
+Maths,"Trigonometry : Ratio & Identity, Trigonometric Equation",0.0734,0.0031,17.58,24
+Maths,Vectors,0.0508,0.0028,12.17,18
+GAT,"Acids, Bases and Salts, Oxidation and Reduction",0.015,0.0019,4.45,8
+GAT,Ancient India,0.0127,0.0011,3.82,12
+GAT,Antonyms,0.0482,0.0008,14.45,60
+GAT,"Basic concepts of Chemistry, Atomic Structure",0.0275,0.0023,8.27,12
+GAT,Botany,0.025,0.0021,7.55,12
+GAT,"Carbon and different forms, Carbon dioxide",0.0128,0.0016,3.82,8
+GAT,Chemistry of Metals and Non Metals,0.019,0.0016,5.73,12
+GAT,Comprehension,0.0209,0.0026,6.27,8
+GAT,Current Affairs,0.041,0.0051,12.27,8
+GAT,Electricity & Magnetism,0.0322,0.002,9.64,16
+GAT,Fill in the Blanks,0.0364,0.0045,10.91,8
+GAT,General Knowledge,0.0454,0.0057,13.64,8
+GAT,Geography of India,0.0395,0.0033,11.82,12
+GAT,Heat & Thermodynamics,0.0166,0.0014,5,12
+GAT,Indian Economy,0.0111,0.0014,3.36,8
+GAT,Indian Polity,0.0227,0.0019,6.82,12
+GAT,Mechanics,0.0345,0.0022,10.36,16
+GAT,Medieval India,0.0115,0.001,3.45,12
+GAT,Modern India,0.0475,0.003,14.27,16
+GAT,Modern Physics,0.016,0.0013,4.82,12
+GAT,Optics,0.027,0.0023,8.09,12
+GAT,Ordering of Sentences,0.0095,0.0012,2.82,8
+GAT,Ordering of Words in a Sentence,0.0215,0.0027,6.45,8
+GAT,Properties of Matter,0.0085,0.0011,2.55,8
+GAT,Selecting Words/Phrases,0.0203,0.0004,6.09,60
+GAT,Some important Chemical Compounds,0.0204,0.0026,6.09,8
+GAT,Spotting Errors,0.0793,0.004,23.82,20
+GAT,Synonyms,0.0464,0.0008,13.91,60
+GAT,Waves,0.0136,0.0017,4.09,8
+GAT,World & Physical Geography,0.0659,0.0041,19.82,16
+GAT,World History,0.0097,0.0008,2.91,12
+GAT,Zoology,0.0381,0.0032,11.45,12
