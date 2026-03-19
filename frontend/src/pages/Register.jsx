@@ -1,40 +1,65 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Added useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { GraduationCap, Eye, EyeOff } from "lucide-react";
+import axios from "axios"; // NEW: Import Axios
 
 function Register() {
   const [role, setRole] = useState("student");
   const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate(); // Hook to handle navigation
+  
+  // NEW: State to track user input
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // State for errors
 
-  const handleRegister = (e) => {
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Logic to send user to the correct dashboard based on their role
-    if (role === "student") {
-      navigate("/student");
-    } else {
-      navigate("/teacher");
+    setError(""); // Clear previous errors
+
+    try {
+      // 1. Send data to your Node.js backend
+      const response = await axios.post("http://localhost:5000/api/auth/register", {
+        name,
+        email,
+        password,
+        role,
+      });
+
+      // 2. Get the token and user data back
+      const userData = response.data;
+
+      // 3. Save the VIP wristband (token) in the browser
+      localStorage.setItem("token", userData.token);
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      // 4. Redirect based on the real role
+      if (userData.role === "student") {
+        navigate("/student");
+      } else {
+        navigate("/teacher");
+      }
+    } catch (err) {
+      // Show error if email is already taken, etc.
+      setError(err.response?.data?.message || "An error occurred during registration.");
     }
   };
 
   return (
     <div className="flex min-h-screen font-sans bg-white">
       
-      {/* Left Side - Matching Front Page Gradient */}
+      {/* Left Side */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-blue-700 to-teal-700 flex-col justify-center items-center p-12 text-center relative overflow-hidden">
-        
-        {/* Pulsing Glow Effect from Front Page */}
         <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-teal-400 opacity-20 blur-3xl animate-pulse z-0"></div>
-        
         <div className="relative z-10 flex flex-col items-center">
           <Link to="/" className="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-6 shadow-xl hover:scale-105 transition-transform cursor-pointer">
             <GraduationCap className="w-8 h-8 text-white" />
           </Link>
-          
           <h1 className="text-4xl font-bold text-white mb-4 tracking-tight">
             Join <span className="text-orange-500">EduVexa</span>
           </h1>
-          
           <p className="text-blue-100 text-lg max-w-xs font-light">
             Start your personalized learning journey today.
           </p>
@@ -49,12 +74,17 @@ function Register() {
 
           <form className="space-y-5" onSubmit={handleRegister}>
             
+            {/* NEW: Error display */}
+            {error && <div className="p-3 bg-red-100 text-red-700 rounded-lg text-sm">{error}</div>}
+
             {/* Full Name */}
             <div>
               <label className="block text-sm font-semibold text-gray-800 mb-1.5">Full Name</label>
               <input 
                 type="text" 
                 placeholder="John Doe" 
+                value={name} // NEW: Bind state
+                onChange={(e) => setName(e.target.value)} // NEW: Update state
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 required
               />
@@ -66,6 +96,8 @@ function Register() {
               <input 
                 type="email" 
                 placeholder="you@example.com" 
+                value={email} // NEW: Bind state
+                onChange={(e) => setEmail(e.target.value)} // NEW: Update state
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 required
               />
@@ -78,6 +110,8 @@ function Register() {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   placeholder="••••••••" 
+                  value={password} // NEW: Bind state
+                  onChange={(e) => setPassword(e.target.value)} // NEW: Update state
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition pr-12"
                   required
                 />

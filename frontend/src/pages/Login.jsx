@@ -1,21 +1,50 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Added useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { GraduationCap, Eye, EyeOff } from "lucide-react";
+import axios from "axios"; // NEW: Import axios
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [selectedRole, setSelectedRole] = useState("student"); // NEW: State to track role
-  const navigate = useNavigate(); // Hook to handle navigation
+  const [selectedRole, setSelectedRole] = useState("student");
+  
+  // NEW: State to track user input
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // State for error messages
+  
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Redirects to the dashboard based on the selected role
-    if (selectedRole === "student") {
-      navigate("/student");
-    } else if (selectedRole === "teacher") {
-      navigate("/teacher");
-    } else if (selectedRole === "admin") {
-      navigate("/admin");
+    setError(""); // Clear previous errors
+
+    try {
+      // Send the data to your Node.js backend
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
+        email,
+        password,
+      });
+
+      // If successful, the backend sends back user data AND a token
+      const userData = response.data;
+
+      // Save the token and user info to the browser's memory
+      localStorage.setItem("token", userData.token);
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      //---------------Redirect based on the role--------------- 
+      if (userData.role === "student") {
+        navigate("/student");
+      } else if (userData.role === "teacher") {
+        navigate("/teacher");
+      } else if (userData.role === "admin") {
+        navigate("/admin");
+      }
+      //--------------------------------------------------------
+
+    } catch (err) {
+      // If the backend sends an error, show it
+      setError(err.response?.data?.message || "An error occurred during login.");
     }
   };
 
@@ -24,19 +53,14 @@ function Login() {
       
       {/* Left Side - Matching Front Page Gradient and Glow */}
       <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-blue-700 to-teal-700 flex-col justify-center items-center p-12 text-center relative overflow-hidden">
-        
-        {/* Pulsing Glow Effect from Front Page */}
         <div className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-teal-400 opacity-20 blur-3xl animate-pulse z-0"></div>
-        
         <div className="relative z-10 flex flex-col items-center">
           <Link to="/" className="w-16 h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl flex items-center justify-center mb-6 shadow-xl hover:scale-105 transition-transform cursor-pointer">
             <GraduationCap className="w-8 h-8 text-white" />
           </Link>
-          
           <h1 className="text-4xl font-bold text-white mb-4 tracking-tight">
             Welcome back to <span className="text-orange-500">EduVexa</span>
           </h1>
-          
           <p className="text-blue-100 text-lg max-w-xs font-light">
             Pick up exactly where you left off.
           </p>
@@ -49,7 +73,7 @@ function Login() {
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Sign in</h2>
           <p className="text-gray-500 mb-6 text-sm">Please enter your details to access your account.</p>
 
-          {/* NEW: Role Selection Tabs for Testing */}
+          {/* Role Selection Tabs for UI display (Actual role is verified by backend) */}
           <div className="flex p-1 bg-gray-100 rounded-xl mb-6 text-xs font-bold uppercase tracking-wider">
             <button 
               type="button"
@@ -70,12 +94,17 @@ function Login() {
 
           <form className="space-y-5" onSubmit={handleLogin}>
             
+            {/* NEW: Display Error Message if login fails */}
+            {error && <div className="p-3 bg-red-100 text-red-700 rounded-lg text-sm">{error}</div>}
+
             {/* Email */}
             <div>
               <label className="block text-sm font-semibold text-gray-800 mb-1.5">Email</label>
               <input 
                 type="email" 
                 placeholder="you@example.com" 
+                value={email} // NEW: Bind state
+                onChange={(e) => setEmail(e.target.value)} // NEW: Update state
                 className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition"
                 required
               />
@@ -88,6 +117,8 @@ function Login() {
                 <input 
                   type={showPassword ? "text" : "password"} 
                   placeholder="••••••••" 
+                  value={password} // NEW: Bind state
+                  onChange={(e) => setPassword(e.target.value)} // NEW: Update state
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition pr-12"
                   required
                 />
