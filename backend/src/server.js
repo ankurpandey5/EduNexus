@@ -12,6 +12,9 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+//Routes
+app.use('/api/auth', require('./routes/authRoutes'));
+
 // simple test route
 app.get('/', (req, res) => {
     res.send('Welcome to the EduNexus API! 🚀');
