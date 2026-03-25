@@ -1,0 +1,11 @@
+.section-title {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #4f46e5;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}

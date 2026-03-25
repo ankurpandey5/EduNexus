@@ -1,0 +1,95 @@
+.input-box {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #cbd5e1;
+  margin: 20px auto 40px;
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Hover */
+.input-box:hover {
+  transition: 0.4s ease-in-out;
+  box-shadow: 1px 1px 15px 1px #b3aeeb,
+              -1px -1px 20px 1px #9d8ef3;
+}
+
+/* Form row (2 column desktop) */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-row span {
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Inputs */
+.input-box input,
+.form-row select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  box-sizing: border-box;
+}
+
+/* Button */
+.input-box button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #6a5cff, #8f7bff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.input-box button:hover {
+  background: #6b3fe2;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr; /* stack */
+    gap: 10px;
+  }
+
+  .input-box {
+    padding: 20px;
+  }
+
+  .input-box span {
+    font-size: 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .input-box {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .input-box input,
+  .form-row select {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .input-box button {
+    width: 100%; /* full width button */
+    padding: 12px;
+  }
+}

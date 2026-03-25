@@ -1,0 +1,16 @@
+.summary-bar {
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: white;
+  font-weight: 500;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}

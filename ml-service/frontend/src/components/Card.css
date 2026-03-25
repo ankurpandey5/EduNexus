@@ -1,0 +1,79 @@
+/* .card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  font-size: larger;
+  height:200px;
+  width: 250px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  color: #000000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  margin:10px;
+  color: #475569;
+} */
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+
+  width: 260px;
+  min-height: 200px;   /* ✅ flexible instead of fixed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+  color: #0f172a;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+/* Table styling (important for your design) */
+.card-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.card-table td {
+  padding: 8px 4px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.card-table tr:last-child td {
+  border-bottom: none;
+}
+
+.card-table td:first-child {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.card-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: #1e293b;
+}
